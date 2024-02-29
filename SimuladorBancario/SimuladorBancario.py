@@ -47,3 +47,19 @@ class SimuladorBancario:
         self.corriente.saldo += saldoAhorros
         self.ahorros.saldo = 0
         
+    def ConsultarSaldoCorriente(self):
+        return "Tu saldo es: "+self.corriente.ConsultarSaldo()
+    
+    def DuplicarAhorro(self):
+        #forma 1
+        self.ahorros.ConsignarMonto(self.ahorros.ConsultarSaldo())
+        
+        # # Forma 2
+        # self.ahorros.saldo *= 2
+    
+    def RetirarTodo(self):
+        total = self.CalcularSaldoTotal()
+        self.corriente.RetirarMonto(self.corriente.ConsultarSaldo())
+        self.ahorros.RetirarMonto(self.ahorros.ConsultarSaldo())
+        
+        return "Retiraste total: "+total
